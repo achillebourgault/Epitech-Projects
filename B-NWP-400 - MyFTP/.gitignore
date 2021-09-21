@@ -1,0 +1,6 @@
+CMakeLists.txt
+*.o
+a.out
+cmake-build-debug
+.idea
+NormEZ.rb

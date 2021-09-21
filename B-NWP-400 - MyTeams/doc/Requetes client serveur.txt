@@ -1,0 +1,121 @@
+Requêtes client / serveur - MyTeams
+
+	Commandes :
+
+Les différentes commandes sont disponnibles pour le client:
+
+	• /help : affiche l'aide
+	• /login "username" : se connecter avec le nom d'utilisateur défini entre guillemets
+	• /logout : se déconnecter
+	• /users : lister tous les utilisateurs qui existent
+	• /user "user_uid" : obtenir les informations pour l'utilisateur dont l'identifiant unique est donné entre guillemets
+	• /send "user_uid" "message" : envoyer le message privé donné en second argument entre guillemets à l'utilisateur dont l'identifiant unique est donné en premier argument entre guillemets
+	• /messages "user_uid" : lister tous les messages privés échangés entre soi-même et l'utilisateur dont l'identifiant unique est donné entre guillemets
+	• /subscribe "team_uid" : permet de recevoir des notifications d'une équipe (création d'un channel, d'une discussion, réponse à une discussion existante...)
+	• /subscribed ?[“team_uuid”] : liste toutes les équipes auquelles l'utilisateur courant est abonné, ou tous les utilisateur abonnés à une équipe (dans le cas ou l'identifiant unique de l'équi est donné entre guillemets)
+	• /unsubscribe [“team_uuid”] : se désabonner de l'équipe dont l'identifiant unique est donné entre guillemets
+	• /use ?[“team_uuid”] ?[“channel_uuid”] ?[“thread_uuid”] : permet de définir quel équipe, channel et discussion utiliser. Peut s'utiliser sans arguments (permet alors de créer une équipe, lister toutes les équipes, ou obtenir les informations de l'utilisateur courant), ou avec plusieurs arguments (pour créer, lister et obtenir les informations sur l'élément sélectionné)
+	• /create : se base sur les données fournies par /use pour créer une équipe, un channel, une discussion ou une réponse
+	• /list : se base sur les données fournies par /use pour lister les équipes existantes, les channels existants, les discussions existantes et les réponses existantes
+	• /info : se base sur les données fournies par /use pour afficher les informations de l'utilisateur courant, de l'équipe sélectionnée, du channel sélectionné ou de la discussion sélectionnée
+
+
+
+
+	Requêtes :
+
+Lorsque l'utilisateur effectue une commande sur le client ce dernière envoie une requête au serveur. Les séparateurs <SP> et <sp> sont utilisés comme chaînes de caratères pour séparer les informations. Voici les différentes requêtes pour chaque commande:
+
+	• /login "username"
+
+		Requête: 100<SP>username	(Se connecter avec le nom username)
+		Réponse: 110				(Connexion effectuée)
+
+	• /logout
+
+		Requête: 150<SP>user_uid	(Déconnecter l'utilisateur avec l'identifiant user_uid)
+		Réponse: 160				(Déconnexion effectuée)
+
+	• /users
+
+		Requête: 200				(Lister les utilisateurs)
+		Réponse: 210<SP>uid<sp>username<sp>status<SP>uid<sp>username<sp>status...
+
+	• /send
+
+		Requête: 300<SP>sender_uid<SP>recipient_uid<SP>message (envoyer le message à l'utilisateur identifié par recipient_uid depuis l'utilisateur sender_uid)
+		Réponse: 310 (Message envoyé) ou 311 (Utilisateur inconnu)
+
+	• /messages
+
+		Requête: 350<SP>uid_send<SP>recipient_uid	(Lister les messages échangés entre l'utilisateur uid_sender et l'utilisateur recipient_uid)
+		Réponse: 361 (Utilisateur inconnu) ou 360<SP>sender_uid<sp>timestamp<sp>message<SP>sender_uid<sp>timestamp<sp>message...
+
+	• /subscribe
+
+		Requête: 400<SP>team_uid<SP>user_uid (Abonner l'utilisateur uder_uid à l'équipe team_uid)
+		Réponse: 410 (abonnement effectué) ou 411 (équipe inconnue)
+
+	• /subscribed
+
+		Requête: 450<SP>user_uid	(Lister les abonnements de l'utilisateur user_uid)
+		Réponse: 451<SP>uid<sp>name<sp>description<SP>uid<sp>name<sp>description
+
+		Requête: 460<SP>team_uid 	(Lister les utilisateurs abonnés à team_uid)
+		Réponse: 461<SP>uid<sp>username<sp>status<SP>uid<sp>username<sp>status... ou 470 (équipe inconnue)
+
+	• /unsubscribe
+
+		Requête: 500<SP>team_uid<SP>user_uid (Désabonner l'utilisateur user_uid de l'équipe team_uid)
+		Réponse: 510 (désabonnement effectué) ou 511 (équipe inconnue)
+
+	• /create
+
+		Requête: 600<SP>name<SP>description<SP>user_uuid (l'utilisateur user_uid crée l'équipe name avec une description)
+		Réponse: 605<SP>team_uid 	(équipe team_uid crée)
+
+		Requête: 610<SP>name<SP>description<SP>team_uuid (Créer un channel dans l'équipe team_uid)
+		Réponse: 615<SP>channel_uid
+
+		Requête: 620<SP>name<SP>message<SP>channel_uuid<SP>user_uuid (Créer une discussion dans le channel channel_uid)
+		Réponse: 625<SP>uid_thread<SP>timestamp
+
+		Requête: 630<SP>team_uid<SP>channel_uid<SP>thread_uid<SP>message (Créer une réponse à une discussion)
+		Réponse: 635<SP>reply_uid<SP>timestamp
+
+	• /list
+
+		Requête: 640 (Lister toutes les équipes existantes)
+		Réponse: 645<SP>team_uid<sp>team_name<sp>team_description
+
+		Requête: 650<SP>team_uid (Lister tous les channels de l'équipe team_uid)
+		Réponse: 655<SP>channel_uid<sp>name<sp>description<SP>channel_uid<sp>name<sp>description...
+
+		Requête: 660<SP>team_uid<SP>channel_uid (Lister toutes les discussion du channel channel_uid)
+		Réponse: 665<SP>thread_uid<sp>timestamp<SP>thread_uid<sp>timestamp...
+
+		Requête: 670<SP>team_uid<SP>channel_uid<SP>thread_uid (Lister toutes les réponses de la discussion thread_uid)
+		Réponse: 655<SP>reply_uid<sp>timestamp<sp>message<SP>reply_uid<sp>timestamp<sp>message...
+
+	• /info
+
+		Requête: 680<SP>team_uid (Lister les informations de l'équipe)
+		Réponse: 685<SP>name<SP>description<SP>team_uid
+
+		Requête: 690<SP>team_uid<SP>channel_uid (Lister les informations de du channel)
+		Réponse: 695<SP>name<SP>description<SP>channel_uid
+
+		Requête: 680<SP>team_uid<SP>channel_uid<SP>thread_uid (Lister les informations de la discussion)
+		Réponse: 685<SP>name<SP>message<SP>thread_uuid<SP>author_uuid
+
+
+
+
+Le serveur envoie également des requêtes au clients lors d'un événement. Les séparateurs <SP> et <sp> sont utilisés comme chaînes de caratères pour séparer les informations. Voici les différentes requêtes pour chaque événement:
+
+	Réception d'un message privé: 800<SP>sender_uid<SP>message
+	Création d'une équipe: 801<SP>name<SP>description<SP>uuid_team
+	Création d'un channel: 802<SP>name<SP>description<SP>uuid_channel
+	Création d'une discussion: 803<SP>name<SP>description<SP>uuid_channel<SP>uuid_thread
+	Connexion d'un utilisateur: 810<SP>username<SP>uuid
+	Déconnexion d'un utilisateur: 811<SP>username<SP>uuid

@@ -1,0 +1,65 @@
+Chaque objet est stocké dans le dossier ".data".
+Ce dernier contient 6 sous-dossiers correspondants à toutes les catégories d'objets que l'on souhaite stocker:
+
+".data"
+		->
+			- "user"
+					<uuid>
+						name:<username>
+						connected:<0-1>
+						socket:<socket>
+			- "channel"
+				<uuid>
+						title:<title>
+						message:<message>
+						data_created :<legacy_timestamp>
+						threads:
+							<thread_uuid>
+							<thread_uuid>
+			- "team"
+				<uuid>
+						name:<username>
+						description:<description>
+						channels:
+							<channel_uuid>
+							<channel_uuid>
+						subscribers:
+							<user_uuid>
+							<user_uuid>
+			- "channel"
+					<uuid>
+						name:<username>
+						description:<description>
+						teamId :<parent_team_uuid>
+						threads:
+							<thread_uuid>
+							<thread_uuid>
+			- "thread"
+					<uuid>
+						title:<title>
+						message:<message>
+						data_created :<legacy_timestamp>
+						responses:
+							<message_uuid>
+							<message_uuid>
+			- "mp"
+					<uuid>
+						authorId:<user_uuid>
+						guestId:<user_uuid>
+						messages:
+							<message_uuid>
+							<message_uuid>
+			- "message"
+					<uuid>
+						message:<message>
+						authorId:<author_uuid>
+						date_created:
+							<tm[0]>
+							<tm[1]>
+							<tm[2]>
+							<tm[3]>
+							<tm[4]>
+							<tm[5]>
+							<tm[6]>
+							<tm[7]>
+							<tm[8]>

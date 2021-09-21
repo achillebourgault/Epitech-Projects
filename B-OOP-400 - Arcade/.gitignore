@@ -1,0 +1,14 @@
+*.o
+a.out
+cmake-build-debug
+.idea
+.scores
+arcade
+CMakeCache.txt
+CMakeFiles/*
+*.cbp
+*.cmake
+*.so
+Testing/*
+build
+CMakeLists.txt

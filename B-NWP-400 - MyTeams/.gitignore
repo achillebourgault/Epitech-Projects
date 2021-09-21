@@ -1,0 +1,10 @@
+*.o
+a.out
+cmake-build-debug
+.idea
+myteams_server
+myteams_cli
+.data
+NormEZ.rb
+CMakeLists.txt
+CMakeLists.txt
