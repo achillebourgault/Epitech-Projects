@@ -52,6 +52,10 @@ There is a "how to play" button available on the main menu.
 * Github: [@LeoFabre](https://github.com/LeoFabre)
 * LinkedIn: [@leo-fabre](https://linkedin.com/in/leo-fabre)
 
+* Github: [@AchilleBourgault](https://github.com/achillebourgault)
+
+* Github: [@Fréderic Lawecki-Walkowiak](https://github.com/fredericlw)
+
 ## 💣 Show your support 💣
 
 Give a ⭐️ if this project helped you!
