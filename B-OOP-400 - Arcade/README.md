@@ -5,7 +5,7 @@
 >Les clients peuvent envoyer des **messages privés**, creer un **Channel**, une **Team**, un **Thread**, et poster des **Messages** sur ces derniers.
 
 
-##Collaboration groups:
+### Collaboration groups:
 
 > Durant ce projet, nous devions rendre compatible notre moteur de jeu avec le moteur de deux autres groupes
 
