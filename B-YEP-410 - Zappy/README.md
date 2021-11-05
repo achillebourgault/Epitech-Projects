@@ -7,7 +7,7 @@ Vous trouverez ici toutes les informations nécessaires à l'utilisation du prog
 
 ## Lancement
 
-**SERVEUR**
+> Serveur
 
     USAGE: ./zappy_server -p port -x width -y height -n name1 name2 ... -c clientsNb -f freq
      port	 is the port number
@@ -17,13 +17,13 @@ Vous trouverez ici toutes les informations nécessaires à l'utilisation du prog
      clientsNb is the number of authorized clients per team
      freq is the reciprocal of time unit for execution of actions
 
-**GUI**
+> GUI
 
 	./zappy_ai -p port -h machine
     port	 is the port number
     machine	 is the name of the machine; localhost by default
 
-**AI**
+> IA
 
     USAGE: ./zappy_ai -p port -n name -h machine
     port	 is the port number
@@ -32,14 +32,12 @@ Vous trouverez ici toutes les informations nécessaires à l'utilisation du prog
 
 ## ✅ Utilisation recommandée
 
-
 	- Lancer le serveur avec une taille carré et non rectangulaire.
 	- Lancer dans cet ordre: Serveur -> GUI -> AI
 
 
 # Informations sur le projet
-## Protocole utilisé
-TCP & String avec \n
+>  Protocole utilisé: TCP & String avec \n
 
 ## Commandes
 
@@ -59,3 +57,15 @@ TCP & String avec \n
 | set object down     		| Set object      	| 7/f		  |
 | start incantation    		| Incantation 		| 300/f		  |
 ```
+
+## Auteurs
+
+👤 **Achille Bourgault**
+
+* Github: [@achillebourgault](https://github.com/achillebourgault)
+* LinkedIn: [@achille-bourgault](https://fr.linkedin.com/in/achille-bourgault-266514177)
+
+👤 **Frédéric Lawecki--Walkowiak**
+
+* Github: [@fredericlw](https://github.com/fredericlw)
+* LinkedIn: [@frederic-lawecki-walkowiak](https://www.linkedin.com/in/frederic-lawecki-walkowiak/)
