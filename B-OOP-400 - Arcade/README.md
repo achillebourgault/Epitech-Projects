@@ -1,10 +1,5 @@
 # Arcade (Game console in Ncurses, SFMl and SDL2)
 
-> Ce projet consiste à heberger un serveur sur le port **P** et permettre à **N** clients de s'y connecter pour pouvoir communiquer.
-
->Les clients peuvent envoyer des **messages privés**, creer un **Channel**, une **Team**, un **Thread**, et poster des **Messages** sur ces derniers.
-
-
 ### Collaboration groups:
 
 > Durant ce projet, nous devions rendre compatible notre moteur de jeu avec le moteur de deux autres groupes
